@@ -8,6 +8,7 @@ const productController_1 = __importDefault(require("../controllers/productContr
 const authMiddleware_1 = require("../middleware/authMiddleware");
 const ProductValidation_1 = require("../validations/ProductValidation");
 const validateErros_1 = require("../utils/validateErros");
+const rateLimiter_1 = require("../utils/rateLimiter");
 const router = (0, express_1.Router)();
 /**
  * @swagger
@@ -83,7 +84,7 @@ router.get("/products/:id", productController_1.default.getProductById);
  *       400:
  *         description: Validation errors
  */
-router.post("/products", ProductValidation_1.createProductValidation, validateErros_1.validateErrors, productController_1.default.createProduct);
+router.post("/products", (0, authMiddleware_1.authenticateAndCheckRoles)(["admin"]), rateLimiter_1.rateLimiter, ProductValidation_1.createProductValidation, validateErros_1.validateErrors, productController_1.default.createProduct);
 /**
  * @swagger
  * /api/products/{id}:

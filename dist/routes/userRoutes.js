@@ -72,7 +72,7 @@ router.post("/login", rateLimiter_1.rateLimiter, userController_1.default.login)
  *       400:
  *         description: Validation errors
  */
-router.post("/users", UserValidations_1.createUserValidation, validateErros_1.validateErrors, userController_1.default.createUser);
+router.post("/users", rateLimiter_1.rateLimiter, UserValidations_1.createUserValidation, validateErros_1.validateErrors, userController_1.default.createUser);
 /**
  * @swagger
  * tags:
@@ -194,7 +194,7 @@ router.put("/users/:id", UserValidations_1.updateUserValidation, validateErros_1
  *       500:
  *         description: Internal server error
  */
-router.delete("/users/:id", userController_1.default.deleteUser);
+router.delete("/users/:id", (0, authMiddleware_1.authenticateAndCheckRoles)(["admin"]), userController_1.default.deleteUser);
 /**
  * @swagger
  * /auth/verify-email:
