@@ -1,7 +1,7 @@
 {
   "name": "nodeexpress",
   "version": "1.0.0",
-  "main": "main.js",
+  "main": "src/main.ts",
   "scripts": {
     "start": "node dist/main.js",
     "dev": "nodemon src/main.ts",
