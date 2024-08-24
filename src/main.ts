@@ -31,10 +31,6 @@ app.get("/", (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, "views", "index.html"));
 });
 
-app.get("/*", (req: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, "views", "404.html"));
-});
-
 //import user and productss
 app.use("/api", productRoutes);
 app.use("/auth", userRoutes);

@@ -39,9 +39,6 @@ app.use(express_1.default.static(path_1.default.join(__dirname, "views")));
 app.get("/", (req, res) => {
     res.sendFile(path_1.default.join(__dirname, "views", "index.html"));
 });
-app.get("/*", (req, res) => {
-    res.sendFile(path_1.default.join(__dirname, "views", "404.html"));
-});
 //import user and productss
 app.use("/api", productRoutes_1.default);
 app.use("/auth", userRoutes_1.default);
