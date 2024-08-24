@@ -6,6 +6,7 @@ import {
   updateProductValidation,
 } from "../validations/ProductValidation";
 import {validateErrors} from "../utils/validateErros";
+import {rateLimiter} from "../utils/rateLimiter";
 
 const router = Router();
 
@@ -88,6 +89,8 @@ router.get("/products/:id", productController.getProductById);
  */
 router.post(
   "/products",
+  authenticateAndCheckRoles(["admin"]),
+  rateLimiter,
   createProductValidation,
   validateErrors,
   productController.createProduct

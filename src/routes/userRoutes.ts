@@ -78,7 +78,7 @@ router.post("/login", rateLimiter, UserController.login);
  */
 router.post(
   "/users",
-
+  rateLimiter,
   createUserValidation,
   validateErrors,
   UserController.createUser
@@ -215,7 +215,11 @@ router.put(
  *       500:
  *         description: Internal server error
  */
-router.delete("/users/:id", UserController.deleteUser);
+router.delete(
+  "/users/:id",
+  authenticateAndCheckRoles(["admin"]),
+  UserController.deleteUser
+);
 
 /**
  * @swagger
