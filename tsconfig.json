@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
+    "outDir": "./dist", // The output directory for compiled files
+    "rootDir": "./src", // The root directory of input files
     "target": "ES6",
     "module": "commonjs",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "outDir": "./dist"
+    "forceConsistentCasingInFileNames": true
   },
   "include": ["src/**/*.ts", "src/views/index.js"],
   "exclude": ["node_modules"]
