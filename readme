@@ -1,0 +1,43 @@
+# Back End API
+
+This repository contains the source code for API, which consists of a backend developed in Node.js and MongoDB.
+
+## Getting Started
+
+### Prerequisites
+
+Before you begin, make sure you have Node.js installed on your machine. You can download and install it from the [official Node.js website](https://nodejs.org/).
+
+### Backend Configuration
+
+1. Navigate to the backend directory:
+
+   ```bash
+   cd myapidoc
+   ```
+
+2. add the `.env` file:
+
+   SECRET_KEY=""
+   PORT= 3333
+   MONGO_URI = ""
+   JWT_EXPIRES_IN=1h
+   BCRYPT_SALT_ROUNDS=12
+   GMAIL_USER=
+   GMAIL_PASS=
+
+3. Install backend dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Start the backend server in development mode:
+   ```bash
+   npm run dev
+   ```
+
+### Important Notes
+
+- Ensure that the environment variables contained in the `.env` file are configured correctly before starting the backend server. These variables are essential for the proper execution of the application.
+- Avoid versioning the `.env` file in Git. Make sure to add it to the `.gitignore` file to prevent it from being included in commits.
