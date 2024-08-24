@@ -9,6 +9,7 @@ import path from "path";
 import SetupSwagger from "./docs/swagger";
 import productRoutes from "./routes/productRoutes";
 import userRoutes from "./routes/userRoutes";
+import homeRoutes from "./routes/homeRoutes";
 
 // Load environment variables
 dotenv.config();
@@ -30,10 +31,8 @@ app.use(bodyParser.json());
 app.use(express.static("static"));
 app.use(express.static(path.join(__dirname, "views")));
 
-// Routes setup
-app.get("/", (req: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, "views", "index.html"));
-});
+// Use the home route
+app.use("/", homeRoutes);
 
 // API Routes
 app.use("/api", productRoutes);
