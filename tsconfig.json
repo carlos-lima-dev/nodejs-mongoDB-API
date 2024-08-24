@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "outDir": "./dist", // The output directory for compiled files
-    "rootDir": "./src", // The root directory of input files
+    "outDir": "./dist",
+    "rootDir": "./src",
     "target": "ES6",
     "module": "commonjs",
     "strict": true,
