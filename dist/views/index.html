@@ -46,14 +46,12 @@
             left: 0;
             bottom: -5px;
             width: 0;
-            height: 2px;
+            height: 1px;
             background-color: #ffffff;
             transition: width 0.3s ease;
         }
 
-        header nav a:hover {
-            color: #007bff;
-        }
+
 
         header nav a:hover::after {
             width: 100%;
@@ -83,29 +81,17 @@
             color: #6c757d;
         }
 
-        a.btn {
-            display: inline-block;
-            font-size: 1.125rem;
-            color: #ffffff;
-            background-color: #007bff;
-            text-decoration: none;
-            padding: 12px 30px;
-            border-radius: 6px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-        }
 
-        a.btn:hover {
-            background-color: #0056b3;
-            transform: translateY(-3px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
 
         footer {
             background-color: #343a40;
             color: #ffffff;
             text-align: center;
             padding: 10px 0;
+        }
+
+        footer p {
+            color: #ffffff;
         }
 
         @media (max-width: 768px) {
@@ -126,10 +112,7 @@
                 font-size: 1rem;
             }
 
-            a.btn {
-                font-size: 1rem;
-                padding: 10px 25px;
-            }
+
 
             .container {
                 padding: 20px 10px;
@@ -154,30 +137,26 @@
                 font-size: 0.9rem;
             }
 
-            a.btn {
-                font-size: 0.9rem;
-                padding: 8px 20px;
-            }
+
         }
     </style>
 </head>
 
 <body>
     <header>
-        <div class="logo">API</div>
+        <div class="logo">ConnectAPI</div>
         <nav>
-            <a href="https://github.com/your-repo-url" target="_blank">GitHub Repo</a>
-            <a href="http://localhost:3333/api-docs">Docs</a>
+            <a href="https://github.com/carlos-lima-dev/myapidoc" target="_blank">GitHub</a>
+            <a href="https://myapidoc.onrender.com/api-docs/">Docs</a>
         </nav>
     </header>
 
     <main class="container">
-        <h1>Welcome to My Express API with TypeScript!</h1>
+        <h1>Welcome to My Express API.</h1>
         <p>This API provides access to two primary resources: users and products. You can manage user accounts,
             including creating, reading, updating, and deleting user information. Additionally, you can handle product
-            listings, including their details, availability, and pricing. Explore the API documentation to get started.
+            listings, including their details and pricing. Explore the API documentation to get started.
         </p>
-        <a href="https://myapidoc.onrender.com/api-docs" class="btn">View API Documentation</a>
     </main>
 
     <footer>
