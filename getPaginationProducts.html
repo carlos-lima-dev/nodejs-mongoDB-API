@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products List</title>
+</head>
+
+<body>
+    <h1>Products List</h1>
+
+    <!-- Filtros -->
+    <div id="filters">
+        <label>
+            Category:
+            <input type="text" id="category" />
+        </label>
+        <label>
+            Min Price:
+            <input type="number" id="minPrice" />
+        </label>
+        <label>
+            Max Price:
+            <input type="number" id="maxPrice" />
+        </label>
+        <button onclick="fetchProducts(1)">Search</button>
+    </div>
+
+    <!-- Lista de Produtos -->
+    <div id="productList"></div>
+
+    <!-- Paginação -->
+    <div id="pagination">
+        <button onclick="previousPage()">Previous</button>
+        <span id="pageInfo"></span>
+        <button onclick="nextPage()">Next</button>
+    </div>
+
+    <script>
+        let currentPage = 1;
+        const limit = 10;
+
+        async function fetchProducts(page) {
+            const category = document.getElementById('category').value;
+            const minPrice = document.getElementById('minPrice').value;
+            const maxPrice = document.getElementById('maxPrice').value;
+
+            try {
+                const response = await fetch(`https://myapidoc.onrender.com/api/products?category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}&page=${page}&limit=${limit}`);
+                const data = await response.json();
+                console.log(data)
+                displayProducts(data.products);
+                updatePaginationInfo(data.total, page, limit);
+            } catch (error) {
+                console.error('Error fetching products:', error);
+                document.getElementById('productList').innerHTML = 'Failed to load products.';
+            }
+        }
+
+        function displayProducts(products) {
+            const productList = document.getElementById('productList');
+            productList.innerHTML = '';
+
+            products.forEach(product => {
+                const productItem = document.createElement('div');
+                productItem.innerHTML = `
+                    <h2>${product.title}</h2>
+                    <p>Category: ${product.category}</p>
+                    <p>Price: $${product.price}</p>
+                `;
+                productList.appendChild(productItem);
+            });
+        }
+
+        function updatePaginationInfo(total, page, limit) {
+            const pageInfo = document.getElementById('pageInfo');
+            const totalPages = Math.ceil(total / limit);
+
+            pageInfo.innerText = `Page ${page} of ${totalPages}`;
+            currentPage = page;
+        }
+
+        function previousPage() {
+            if (currentPage > 1) {
+                fetchProducts(currentPage - 1);
+            }
+        }
+
+        function nextPage() {
+            fetchProducts(currentPage + 1);
+        }
+
+        // Carrega os produtos na primeira página ao carregar a página
+        fetchProducts(1);
+    </script>
+</body>
+
+</html>
