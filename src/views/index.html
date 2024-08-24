@@ -7,56 +7,182 @@
     <title>Welcome to My API</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-            text-align: center;
+            background-color: #f8f9fa;
+            color: #212529;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        header nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 1rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        header nav a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: #ffffff;
+            transition: width 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #007bff;
+        }
+
+        header nav a:hover::after {
+            width: 100%;
         }
 
         .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: 20px auto;
+            flex: 1;
         }
 
         h1 {
-            font-size: 2.5em;
+            font-size: 2.5rem;
             margin-bottom: 20px;
+            color: #343a40;
         }
 
         p {
-            font-size: 1.2em;
+            font-size: 1.125rem;
             margin-bottom: 30px;
+            color: #6c757d;
         }
 
-        a {
+        a.btn {
             display: inline-block;
-            font-size: 1.1em;
-            color: #007BFF;
+            font-size: 1.125rem;
+            color: #ffffff;
+            background-color: #007bff;
             text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            border: 1px solid #007BFF;
+            padding: 12px 30px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
         }
 
-        a:hover {
-            background-color: #007BFF;
-            color: #fff;
+        a.btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            header .logo {
+                font-size: 1.2rem;
+            }
+
+            header nav a {
+                font-size: 0.9rem;
+                margin-left: 10px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            a.btn {
+                font-size: 1rem;
+                padding: 10px 25px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header .logo {
+                font-size: 1rem;
+            }
+
+            header nav a {
+                font-size: 0.8rem;
+                margin-left: 5px;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+
+            a.btn {
+                font-size: 0.9rem;
+                padding: 8px 20px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
+    <header>
+        <div class="logo">API</div>
+        <nav>
+            <a href="https://github.com/your-repo-url" target="_blank">GitHub Repo</a>
+            <a href="http://localhost:3333/api-docs">Docs</a>
+        </nav>
+    </header>
+
+    <main class="container">
         <h1>Welcome to My Express API with TypeScript!</h1>
-        <p>Explore our API documentation to get started:</p>
-        <a href="http://localhost:${PORT}/api-docs">API Documentation</a>
-    </div>
+        <p>This API provides access to two primary resources: users and products. You can manage user accounts,
+            including creating, reading, updating, and deleting user information. Additionally, you can handle product
+            listings, including their details, availability, and pricing. Explore the API documentation to get started.
+        </p>
+        <a href="https://myapidoc.onrender.com/api-docs" class="btn">View API Documentation</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Carlos Lima. All rights reserved.</p>
+    </footer>
 </body>
 
 </html>
