@@ -10,7 +10,7 @@ import SetupSwagger from "./docs/swagger";
 import productRoutes from "./routes/productRoutes";
 import userRoutes from "./routes/userRoutes";
 import homeRoutes from "./routes/homeRoutes";
-
+import emailRoutes from "./routes/emailRoutes";
 // Load environment variables
 dotenv.config();
 
@@ -37,14 +37,14 @@ app.use("/", homeRoutes);
 // API Routes
 app.use("/api", productRoutes);
 app.use("/auth", userRoutes);
-
+app.use("/auth", emailRoutes);
 const startApp = async () => {
   try {
     mongoose.set("strictQuery", true);
     await mongoose.connect(String(MONGO_URI));
-    console.log("sucessely connected to database");
+    console.log("Sucessely connected to database");
     app.listen(PORT, () => {
-      console.log(`server is ok at http://localhost:${PORT}`);
+      console.log(`Server is ok at http://localhost:${PORT}`);
     });
   } catch (error: unknown) {
     if (error instanceof Error) {
